@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 
@@ -12,7 +11,7 @@ const navItems = [
   { name: "Notre Histoire", href: "/#notre-histoire" },
   { name: "Nos Activités", href: "/#nos-activites" },
   { name: "Contact", href: "/#contact" },
-  { name: "À propos", href: "/a-propos" },
+  { name: "Blog", href: "/blog" },
 ];
 
 export function Header() {
@@ -29,16 +28,13 @@ export function Header() {
   });
 
   return (
-    <motion.header
+    <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out",
         isScrolled
           ? "bg-background/80 backdrop-blur-md border-b shadow-sm py-4"
           : "bg-transparent py-6"
       )}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         {/* Logo */}
@@ -61,13 +57,6 @@ export function Header() {
             </Link>
           ))}
         </nav>
-
-        {/* CTA Button */}
-        <div className="hidden md:block">
-          <Button size="sm" className="rounded-full px-6">
-            Commencer
-          </Button>
-        </div>
 
         {/* Mobile Menu Toggle */}
         <button
@@ -97,15 +86,9 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
-            <Button
-              className="w-full mt-2"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Commencer
-            </Button>
           </nav>
         </motion.div>
       )}
-    </motion.header>
+    </header>
   );
 }

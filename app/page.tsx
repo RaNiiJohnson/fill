@@ -16,6 +16,8 @@ import {
   Users,
 } from "lucide-react";
 import Link from "next/link";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function Home() {
   return (
@@ -41,11 +43,11 @@ export default function Home() {
                 <Button size="lg" className="gap-2 text-base h-12 px-8">
                   Nous Contacter <ArrowRight className="h-4 w-4" />
                 </Button>
-                <Link href="/a-propos">
+                <Link href="/blog">
                   <Button
-                    size="lg"
                     variant="outline"
-                    className="text-base h-12 px-8"
+                    size="lg"
+                    className="border-primary text-primary hover:bg-primary/10"
                   >
                     En savoir plus
                   </Button>
@@ -79,7 +81,10 @@ export default function Home() {
       <Separator />
 
       {/* Histoire & Objectif Section */}
-      <section id="notre-histoire" className="py-24 bg-muted/30">
+      <section
+        id="notre-histoire"
+        className="flex flex-col py-24 bg-muted/30 items-center justify-center"
+      >
         <div className="container px-4 md:px-6">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-24">
             {/* Notre Histoire */}
@@ -139,7 +144,10 @@ export default function Home() {
       </section>
 
       {/* Nos Activités Section */}
-      <section id="nos-activites" className="py-24">
+      <section
+        id="nos-activites"
+        className="flex flex-col py-24 items-center justify-center  bg-background"
+      >
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4">
@@ -152,78 +160,111 @@ export default function Home() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                title: "Consulting Stratégique",
-                description:
-                  "Analyse approfondie et recommandations pour orienter vos décisions majeures.",
-                icon: BarChart3,
-                color: "bg-blue-500/10 text-blue-500",
-              },
-              {
-                title: "Coaching de Dirigeants",
-                description:
-                  "Accompagnement personnalisé pour renforcer votre leadership et votre impact.",
-                icon: Users,
-                color: "bg-green-500/10 text-green-500",
-              },
-              {
-                title: "Transformation Digitale",
-                description:
-                  "Guidance dans l'adoption des nouvelles technologies et processus.",
-                icon: BrainCircuit,
-                color: "bg-purple-500/10 text-purple-500",
-              },
-              {
-                title: "Formation & Ateliers",
-                description:
-                  "Programmes sur mesure pour monter en compétence vos équipes.",
-                icon: Lightbulb,
-                color: "bg-yellow-500/10 text-yellow-500",
-              },
-              {
-                title: "Gestion de Projet",
-                description:
-                  "Pilotage efficace de vos initiatives stratégiques.",
-                icon: Target,
-                color: "bg-red-500/10 text-red-500",
-              },
-              {
-                title: "Audit Organisationnel",
-                description:
-                  "Diagnostic complet pour optimiser vos structures et processus.",
-                icon: BarChart3,
-                color: "bg-indigo-500/10 text-indigo-500",
-              },
-            ].map((activity, index) => (
-              <Card
-                key={index}
-                className="group relative overflow-hidden border-none shadow-lg hover:shadow-xl transition-all duration-300 bg-card/50 backdrop-blur-sm"
-              >
-                <div className="absolute inset-0 bg-linear-to-br from-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <CardHeader>
-                  <div
-                    className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 ${activity.color}`}
-                  >
-                    <activity.icon className="h-6 w-6" />
-                  </div>
-                  <CardTitle className="text-xl mb-2">
-                    {activity.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    {activity.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
+            <Card className="group relative overflow-hidden border-none shadow-lg hover:shadow-xl transition-all duration-300 bg-card/50 backdrop-blur-sm">
+              <div className="absolute inset-0 bg-linear-to-br from-transparent to-primary/5 opacity-100" />
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-blue-500/10 text-blue-500">
+                  <BarChart3 className="h-6 w-6" />
+                </div>
+                <CardTitle className="text-xl mb-2">
+                  Consulting Stratégique
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Analyse approfondie et recommandations pour orienter vos
+                  décisions majeures.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="group relative overflow-hidden border-none shadow-lg hover:shadow-xl transition-all duration-300 bg-card/50 backdrop-blur-sm">
+              <div className="absolute inset-0 bg-linear-to-br from-transparent to-primary/5 opacity-100" />
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-green-500/10 text-green-500">
+                  <Users className="h-6 w-6" />
+                </div>
+                <CardTitle className="text-xl mb-2">
+                  Coaching de Dirigeants
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Accompagnement personnalisé pour renforcer votre leadership et
+                  votre impact.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="group relative overflow-hidden border-none shadow-lg hover:shadow-xl transition-all duration-300 bg-card/50 backdrop-blur-sm">
+              <div className="absolute inset-0 bg-linear-to-br from-transparent to-primary/5 opacity-100" />
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-purple-500/10 text-purple-500">
+                  <BrainCircuit className="h-6 w-6" />
+                </div>
+                <CardTitle className="text-xl mb-2">
+                  Transformation Digitale
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Guidance dans l&apos;adoption des nouvelles technologies et
+                  processus.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="group relative overflow-hidden border-none shadow-lg hover:shadow-xl transition-all duration-300 bg-card/50 backdrop-blur-sm">
+              <div className="absolute inset-0 bg-linear-to-br from-transparent to-primary/5 opacity-100" />
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-yellow-500/10 text-yellow-500">
+                  <Lightbulb className="h-6 w-6" />
+                </div>
+                <CardTitle className="text-xl mb-2">
+                  Formation & Ateliers
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Programmes sur mesure pour monter en compétence vos équipes.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="group relative overflow-hidden border-none shadow-lg hover:shadow-xl transition-all duration-300 bg-card/50 backdrop-blur-sm">
+              <div className="absolute inset-0 bg-linear-to-br from-transparent to-primary/5 opacity-100" />
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-red-500/10 text-red-500">
+                  <Target className="h-6 w-6" />
+                </div>
+                <CardTitle className="text-xl mb-2">
+                  Gestion de Projet
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Pilotage efficace de vos initiatives stratégiques.
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="group relative overflow-hidden border-none shadow-lg hover:shadow-xl transition-all duration-300 bg-card/50 backdrop-blur-sm">
+              <div className="absolute inset-0 bg-linear-to-br from-transparent to-primary/5 opacity-100" />
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-indigo-500/10 text-indigo-500">
+                  <BarChart3 className="h-6 w-6" />
+                </div>
+                <CardTitle className="text-xl mb-2">
+                  Audit Organisationnel
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Diagnostic complet pour optimiser vos structures et processus.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
       {/* Info / Stats Section */}
-      <section className="py-24 bg-primary text-primary-foreground">
+      <section className="py-24 bg-primary text-primary-foreground flex flex-col items-center justify-center">
         <div className="container px-4 md:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
@@ -246,53 +287,70 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-muted/50">
+      <section
+        id="contact"
+        className="py-24 bg-muted/50 flex flex-col items-center justify-center"
+      >
         <div className="container px-4 md:px-6">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <div className="flex flex-col gap-6">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                Prêt à transformer votre entreprise ?
+                Prêt à transformer votre entreprise?
               </h2>
               <p className="text-lg text-muted-foreground">
-                Contactez-nous dès aujourd&apos;hui pour une consultation
-                gratuite. Discutons de vos projets et voyons comment nous
-                pouvons vous aider à atteindre vos objectifs.
+                Contactez-nous dès aujourd&apos;hui pour une consultation .
+                Discutons de vos projets et voyons comment nous pouvons vous
+                aider à atteindre vos objectifs.
               </p>
 
               <div className="flex flex-col gap-4 mt-4">
-                <div className="flex items-center gap-4">
+                <Link
+                  href="mailto:contact@entreprise.com"
+                  className="flex items-center gap-4 group"
+                >
                   <div className="p-3 rounded-full bg-background shadow-sm">
                     <Mail className="h-5 w-5 text-primary" />
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
-                    <p className="text-muted-foreground/40">
+                    <p className="text-muted-foreground/40 group-hover:text-primary transition-colors">
                       contact@entreprise.com
                     </p>
                   </div>
-                </div>
-                <div className="flex items-center gap-4">
+                </Link>
+                <Link
+                  href="tel:+33123456789"
+                  className="flex items-center gap-4 group"
+                >
                   <div className="p-3 rounded-full bg-background shadow-sm">
                     <Phone className="h-5 w-5 text-primary" />
                   </div>
                   <div>
                     <p className="font-medium">Téléphone</p>
-                    <p className="text-muted-foreground/40">
+                    <p className="text-muted-foreground/40 group-hover:text-primary transition-colors">
                       +33 1 23 45 67 89
                     </p>
                   </div>
-                </div>
-                <div className="flex items-center gap-4">
+                </Link>
+                <Link
+                  href={
+                    "https://www.google.com/maps/place/La+Tour+Redland/@-18.8841735,47.5206908,1019m/data=!3m2!1e3!4b1!4m6!3m5!1s0x21f0812edc843973:0x18d65fdd081e2cdc!8m2!3d-18.8841786!4d47.5232657!16s%2Fg%2F11q251srpq?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D"
+                  }
+                  className="flex items-center gap-4 group"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <div className="p-3 rounded-full bg-background shadow-sm">
                     <MapPin className="h-5 w-5 text-primary" />
                   </div>
                   <div>
                     <p className="font-medium">Adresse</p>
-                    <p className="text-muted-foreground/40">
-                      123 Avenue des Champs-Élysées, Paris
+                    <p className="text-muted-foreground/40 group-hover:text-primary transition-colors">
+                      La Tour, Rue Ravoninahitriniarivo - ANKORONDRANO
+                      ANTANANARIVO, 101
                     </p>
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
 
@@ -302,20 +360,15 @@ export default function Home() {
                   <label htmlFor="name" className="text-sm font-medium">
                     Nom complet
                   </label>
-                  <input
-                    id="name"
-                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    placeholder="Votre nom"
-                  />
+                  <Input id="name" placeholder="Votre nom" />
                 </div>
                 <div className="grid gap-2">
                   <label htmlFor="email" className="text-sm font-medium">
                     Email
                   </label>
-                  <input
+                  <Input
                     id="email"
                     type="email"
-                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     placeholder="votre@email.com"
                   />
                 </div>
@@ -323,11 +376,7 @@ export default function Home() {
                   <label htmlFor="message" className="text-sm font-medium">
                     Message
                   </label>
-                  <textarea
-                    id="message"
-                    className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    placeholder="Comment pouvons-nous vous aider ?"
-                  />
+                  <Textarea id="message" placeholder="Votre message" />
                 </div>
                 <Button size="lg" className="mt-2 w-full">
                   Envoyer le message
