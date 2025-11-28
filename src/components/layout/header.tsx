@@ -28,44 +28,54 @@ export function Header() {
   });
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out",
-        isScrolled
-          ? "bg-background/80 backdrop-blur-md border-b shadow-sm py-4"
-          : "bg-transparent py-6"
-      )}
-    >
-      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-xl">
-            E
-          </div>
-          <span className="text-xl font-bold tracking-tight">Entreprise</span>
-        </Link>
+    <header className="fixed top-0 left-0 right-0 z-50">
+      <div
+        className={cn(
+          "relative z-50 w-full transition-all duration-300 ease-in-out",
+          isScrolled || isMobileMenuOpen
+            ? "bg-background/80 backdrop-blur-md border-b shadow-sm py-4"
+            : "bg-transparent py-6"
+        )}
+      >
+        <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2">
+            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-xl">
+              E
+            </div>
+            <span className="text-xl font-bold tracking-tight">Entreprise</span>
+          </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-sm font-medium hover:text-primary transition-colors"
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-sm font-medium hover:text-primary transition-colors"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className="md:hidden p-2 text-foreground"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X /> : <Menu />}
-        </button>
+          {/* Mobile Menu Toggle */}
+          <button
+            className="md:hidden p-2 text-foreground"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
+
+      {/* Overlay */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/70 z-40"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
@@ -73,7 +83,7 @@ export function Header() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="absolute top-full left-0 right-0 bg-background border-b shadow-lg md:hidden"
+          className="absolute top-full left-0 right-0 bg-background border-b shadow-lg md:hidden z-50"
         >
           <nav className="flex flex-col p-4 gap-4">
             {navItems.map((item) => (
