@@ -41,13 +41,15 @@ export default function Home() {
                 <Button size="lg" className="gap-2 text-base h-12 px-8">
                   Nous Contacter <ArrowRight className="h-4 w-4" />
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-base h-12 px-8"
-                >
-                  En savoir plus
-                </Button>
+                <Link href="/a-propos">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="text-base h-12 px-8"
+                  >
+                    En savoir plus
+                  </Button>
+                </Link>
               </div>
             </div>
             <div className="relative mx-auto w-full max-w-[600px] lg:max-w-none">
@@ -77,7 +79,7 @@ export default function Home() {
       <Separator />
 
       {/* Histoire & Objectif Section */}
-      <section className="py-24 bg-muted/30">
+      <section id="notre-histoire" className="py-24 bg-muted/30">
         <div className="container px-4 md:px-6">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-24">
             {/* Notre Histoire */}
@@ -137,7 +139,7 @@ export default function Home() {
       </section>
 
       {/* Nos Activités Section */}
-      <section className="py-24">
+      <section id="nos-activites" className="py-24">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-4">
@@ -244,7 +246,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-24 bg-muted/50">
+      <section id="contact" className="py-24 bg-muted/50">
         <div className="container px-4 md:px-6">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <div className="flex flex-col gap-6">
@@ -264,7 +266,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground/40">
                       contact@entreprise.com
                     </p>
                   </div>
@@ -275,7 +277,9 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="font-medium">Téléphone</p>
-                    <p className="text-muted-foreground">+33 1 23 45 67 89</p>
+                    <p className="text-muted-foreground/40">
+                      +33 1 23 45 67 89
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -284,7 +288,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="font-medium">Adresse</p>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground/40">
                       123 Avenue des Champs-Élysées, Paris
                     </p>
                   </div>
@@ -300,7 +304,7 @@ export default function Home() {
                   </label>
                   <input
                     id="name"
-                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     placeholder="Votre nom"
                   />
                 </div>
@@ -311,7 +315,7 @@ export default function Home() {
                   <input
                     id="email"
                     type="email"
-                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     placeholder="votre@email.com"
                   />
                 </div>
@@ -321,7 +325,7 @@ export default function Home() {
                   </label>
                   <textarea
                     id="message"
-                    className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     placeholder="Comment pouvons-nous vous aider ?"
                   />
                 </div>
@@ -333,21 +337,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-6 border-t bg-background">
-        <div className="container flex flex-col md:flex-row items-center justify-between gap-4 px-4 md:px-6 text-sm text-muted-foreground">
-          <p>© 2024 Entreprise Consulting. Tous droits réservés.</p>
-          <div className="flex gap-4">
-            <Link href="#" className="hover:text-foreground transition-colors">
-              Mentions légales
-            </Link>
-            <Link href="#" className="hover:text-foreground transition-colors">
-              Politique de confidentialité
-            </Link>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

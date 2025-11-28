@@ -8,10 +8,11 @@ import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { name: "Accueil", href: "#" },
-  { name: "Notre Histoire", href: "#" },
-  { name: "Nos Activités", href: "#" },
-  { name: "Contact", href: "#" },
+  { name: "Accueil", href: "/" },
+  { name: "Notre Histoire", href: "/#notre-histoire" },
+  { name: "Nos Activités", href: "/#nos-activites" },
+  { name: "Contact", href: "/#contact" },
+  { name: "À propos", href: "/a-propos" },
 ];
 
 export function Header() {
